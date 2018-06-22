@@ -1,0 +1,48 @@
+
+<div>Filter By Price</div>
+<table>
+  <tr>
+    <td><input type="text" placeholder="Minimum Price" [(ngModel)]="min"></td>
+    <td><input type="text" placeholder="Maximum Price" [(ngModel)]="max"></td>
+    <td><button (click)="filterByPrice()">Filter</button></td>
+  </tr>
+</table>
+<div *ngIf= "!isMinValid">
+  The minimum price is not in the correct format.
+</div>
+
+<div *ngIf= "!isMaxValid">
+  The maximum price entered is not in the correct format.
+</div>
+
+<div *ngIf="isMinGreaterThanMax">
+  This min amount cannot be greater than max amount.
+</div>
+<br>
+<hr width="100%">
+<br>
+<table cellpadding="5px">
+  <tr *ngFor="let parts of displayParts">
+    <td *ngFor="let part of parts">
+      <div>
+       <img src='https://asset.lemansnet.com/{{part.primaryMedia.url}}.png?x=176&y=176&b=&t=image/png'>
+      </div>
+      <div>
+        {{part.name}}
+      </div>
+      <br/>
+      <div>
+        {{part.brand.name}}
+      </div>
+      <div class="price">
+        <div *ngIf="part.partSummary.priceRanges.retail.start === part.partSummary.priceRanges.retail.end; else priceRange">
+          {{part.partSummary.priceRanges.retail.start | currency:'USD':'symbol' }}
+        </div>
+        <ng-template #priceRange>
+          {{part.partSummary.priceRanges.retail.start | currency:'USD':'symbol'}} - {{part.partSummary.priceRanges.retail.end | currency:'USD':'symbol'}}
+        </ng-template>
+        <div class="msrp">MRSP</div>
+      </div>
+    </td>
+ </tr>
+</table>

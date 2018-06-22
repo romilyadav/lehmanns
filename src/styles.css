@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+button {
+    background-color: rgb(86, 76, 175); /* Green */
+    border: none;
+    color: white;
+    padding: 6px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+}
+
+
+input {
+    border: 1px solid rgb(86, 76, 175);
+    height: 20px;
+}
+
+.price {
+    background-color: lightslategray;
+    text-align: right;
+    padding: 5px 5px 5px 5px;
+}
+
+.msrp{
+    font-size: 11px;
+}
